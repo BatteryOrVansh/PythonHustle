@@ -1,7 +1,11 @@
+# LISTS
+
+# Basic Operations on Lists
 
 # 1 create a list of 5 numbers, print the first element, last element and length of the list
 l = [1,2,3,4,5]
 print(l[0], l[-1], len(l))
+
 
 # 2 take a list of numbers, and find the sum and average using built-in functions.
 l2 = [10,20,30,40,50]
@@ -28,8 +32,10 @@ l3 = [1,1,1,1,2,2,2,3,3,3,4,4,5,6,7,8,9]
 print("1 is present: ",l3.count(1), "times")
 print("3 is present: ",l3.count(3), "times")
 
+#######################################################################################################
 
-# SEARCHING AND SORTING
+# Searching and Sorting Lists
+
 # 6 write a program to check if a number exists in a list or not
 l4 = [1,2,3,4,5,6,100]
 if 100 in l4:
@@ -37,4 +43,22 @@ if 100 in l4:
 else:
     print("it doesn't")
 
-# 7 
+
+# 7 Create a list of 5 integers. Use .index() to find the position of a given number. 
+l5 = [1,2,3,4,5]
+print(l5.index(3))
+
+
+# 8 Sort a list in ascending and descending order using .sort() and reverse=True
+mylist = [3,2,5,1,7,6,8,4,9,0]
+mylist.sort()
+print("Ascending: ", mylist)
+
+mylist.sort(reverse=True)
+print("Descending: ", mylist)
+
+
+# 9 Reverse a list using .reverse() method.
+rev = ["reversed", "was", "sentence", "This"]
+rev.reverse()
+print(rev)
