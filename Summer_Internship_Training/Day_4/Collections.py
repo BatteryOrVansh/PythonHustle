@@ -20,3 +20,21 @@ print("Watched type: ", type(watched))
 
 print("Recommend: ", recommend)
 print("Recommend type: ", type(recommend))
+
+# create a dict representing a product with keys name, price and tags (list).. Write a code to add a new tag, update the price by applying a 10% discount, and print a formatted sentence describing the final prodduct using f-string.
+
+product = {
+    "name" : "Motorbike",
+    "price": 70000.00,
+    "tags": ["bike", "vehicle", "two-wheeler"]
+    }
+
+# add a tag:
+product["tags"].extend(["transportation", "motorcycle"])
+
+# update the price by applying a 10% discount
+product["price"] = product["price"]*0.90
+
+# print a formatted sentence describing the final product using f-string
+print(f"The product is a {product['name']} and its updated price is {product['price']}. Its tags are {product['tags']}")
+
