@@ -44,3 +44,7 @@ def cube(n):
 
 n = int(input("Enter a number for its cube: "))
 cube(n)
+
+# Lambda Functions
+square = lambda x: x**2
+print(square(5))
