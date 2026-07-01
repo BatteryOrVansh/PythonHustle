@@ -22,3 +22,19 @@ my_car = Car("Toyota", 2020)
 
 # Calling the display info method inherited from the parent class Vehicle
 print(my_car.display_info())  # Output: Toyota (2020)
+
+class Animal:
+    def __init__(self, species, region):
+        self.species = species
+        self.region = region
+    
+    def display_info(self):
+        return f"{self.species} is found in {self.region}"
+    
+    
+class typeOfAnimal(Animal):
+    pass
+
+animal1 = typeOfAnimal("Bengal Tiger", "India")
+
+print(animal1.display_info())
