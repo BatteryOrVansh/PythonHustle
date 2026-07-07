@@ -12,6 +12,4 @@ while(x>1):
 print("The factorial is : ", y)
 
 
-
-
     
