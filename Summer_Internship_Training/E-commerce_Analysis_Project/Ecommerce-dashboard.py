@@ -3,9 +3,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
+from pathlib import Path
 
 # ---------------------------------------------------------
-# Page Config (First calling page config)
+# Page Config (Must be the first Streamlit command)
 # ---------------------------------------------------------
 st.set_page_config(
     page_title="Ecommerce Sales Dashboard",
@@ -16,14 +17,17 @@ st.set_page_config(
 sns.set_style("whitegrid")
 
 # ---------------------------------------------------------
-# Data Load + Clean (Load Dataset)
+# File Paths
 # ---------------------------------------------------------
-DATA_PATH = "data.csv"
+BASE_DIR = Path(__file__).resolve().parent
+DATA_PATH = BASE_DIR / "data.csv"
 
-
+# ---------------------------------------------------------
+# Data Load + Clean
+# ---------------------------------------------------------
 @st.cache_data
 def load_data(path):
-    df = pd.read_csv(path,encoding="latin1")
+    df = pd.read_csv(path, encoding="latin1")
     df = df.dropna(subset=["Description"])
 
     df["IsCancelled"] = df["InvoiceNo"].astype(str).str.startswith("C")
@@ -35,9 +39,14 @@ def load_data(path):
     ].copy()
 
     df_clean["InvoiceDate"] = pd.to_datetime(
-        df_clean["InvoiceDate"], format="%m/%d/%Y %H:%M"
+        df_clean["InvoiceDate"],
+        format="%m/%d/%Y %H:%M"
     )
-    df_clean["TotalPrice"] = np.multiply(df_clean["Quantity"], df_clean["UnitPrice"])
+
+    df_clean["TotalPrice"] = (
+        df_clean["Quantity"] * df_clean["UnitPrice"]
+    )
+
     df_clean["Year"] = df_clean["InvoiceDate"].dt.year
     df_clean["Month"] = df_clean["InvoiceDate"].dt.month
     df_clean["Hour"] = df_clean["InvoiceDate"].dt.hour
@@ -45,7 +54,6 @@ def load_data(path):
     df_clean["YearMonth"] = df_clean["InvoiceDate"].dt.to_period("M").astype(str)
 
     return df_clean
-
 
 df_clean = load_data(DATA_PATH)
 
