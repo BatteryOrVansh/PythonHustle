@@ -18,7 +18,7 @@ sns.set_style("whitegrid")
 # ---------------------------------------------------------
 # Data Load + Clean (Load Dataset)
 # ---------------------------------------------------------
-DATA_PATH = r"C:\Users\Vansh\Desktop\CODE\PythonHustle\Summer_Internship_Training\E-commerce_Analysis_Project\data.csv"
+DATA_PATH = "data.csv"
 
 
 @st.cache_data
